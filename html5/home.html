@@ -1,0 +1,92 @@
+<html>
+<head>
+<center>HTML 5 development.</center>
+
+<style type="text/css">
+	#div1, #div2 {
+		float:left; width:100px;
+		height:45px;
+		margin:10px;
+		padding:5px;
+		border:1px solid #aaaaaa;
+	}
+</style>
+
+<script type="text/javascript">
+	function allowDrop(ev) {
+		ev.preventDefault();
+	}
+
+	function drag(ev) {
+		ev.dataTransfer.setData("Text", ev.target.id);
+	}
+
+	function drop(ev) {
+		var data = ev.dataTransfer.getData("Text");
+		ev.target.appendChild(document.getElementById(data));
+		ev.preventDefault();
+	}
+</script>
+
+<script type="text/javascript">
+	
+	window.onload = function() {
+		init();
+	};
+	
+	function init(){
+		draw_background();
+	};
+	
+	function draw_background() {
+		var origin_x = 0;
+		var origin_y = 0;
+		var width = 1000;
+		var height = 50;
+	
+		var canvas=document.getElementById('myCanvas');
+		var ctx=canvas.getContext('2d');
+		ctx.fillStyle='#6BD6D3';
+		ctx.fillRect(origin_x,origin_y,width,height);
+	};
+	
+</script>
+
+</head>
+<body>
+<br/>
+<a href="../index.html" >Back</a>
+<br/>
+HTML 5 test site.
+<br/>
+<u>Reference</u>
+<ul>
+<li>
+<a href="http://lamberta.github.com/html5-animation/">http://lamberta.github.com/html5-animation/</a>
+</li>
+<li>
+<a href="http://browserquest.mozilla.org/">http://browserquest.mozilla.org/</a>
+<a href="https://github.com/mozilla/BrowserQuest">github</a>
+</li>
+</ul>
+</br>
+<ul>
+<li>
+	Drag the picture into the boxes.<br/>
+	<table><tr><td>
+		<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+			<img src="../img/Caveman.jpg" draggable="true" ondragstart="drag(event)"
+			id="drag1" width="88" height="40" />
+		</div>
+		<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	</td></tr></table>
+</li>
+<li>
+	Using canvas.<br/>
+	<table border="1" width="100%" height="300" ><tr><td>
+	<canvas id="myCanvas" style="width:100%; height:100%; border:0px solid"></canvas>
+	</td></tr></table>
+</li>
+</ul>
+</body>
+</html>
